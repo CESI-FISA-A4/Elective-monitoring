@@ -1,17 +1,13 @@
 const axios = require('axios');
 const HOST = process.env.HOST;
-const axiosInstances = {};
 async function pingService(host, port, url) {
   try {
-    if (!(`${host}:${port}` in axiosInstances)) {
-      axiosInstances[`${host}:${port}`] = axios.create({
-        baseURL: `http://${host}:${port}`,
-      });
-    }
-    const axiosInstance = axiosInstances[`${host}:${port}`]
+    const axiosInstance = axios.create({
+      baseURL: `http://${host}:${port}`,
+    });
     const response = await axiosInstance({
       // method: "TRACE",
-      url: url
+      url: `${url}/ping`
     });
     return true;
   } catch (error) {
@@ -83,15 +79,6 @@ module.exports = {
       isAvailable = false;
     }
     return { name: "statistique", host: HOST, port: 3006, isAvailable, endpoint: `/api/statistics` }
-  },
-  pingCommande: async (req, res) => {
-    let isAvailable;
-    try {
-      isAvailable = await pingService(HOST, 3007, `/api/orders`);
-    } catch (error) {
-      isAvailable = false;
-    }
-    return { name: "monitoring", host: HOST, port: 3007, isAvailable, endpoint: `/api/orders` }
   },
   pingGit: async (req, res) => {
     let isAvailable;
