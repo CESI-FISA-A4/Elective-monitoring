@@ -18,18 +18,7 @@ module.exports = {
                     redirectUrl: "/api/orders",
                     routeProtections: [
                         // Orders
-                        { methods: ["GET"], route: "/", roles: ["restaurantOwner", "user", "deliveryman", "admin", "salesman"] },
-                        { methods: ["POST"], route: "/", roles: ["user", "admin"] },
-                        { methods: ["POST"], route: "/:id/restaurant-checked", roles: ["restaurantOwner", "admin"] },
-                        { methods: ["POST"], route: "/:id/deliveryman-checked", roles: ["deliveryman", "admin"] },
-                        { methods: ["POST"], route: "/:id/prepared", roles: ["restaurantOwner", "admin"] },
-                        { methods: ["POST"], route: "/:id/delivered", roles: ["deliveryman", "admin"] },
-                        { methods: ["POST"], route: "/:id/abort", roles: ["user", "restaurantOwner", "admin"] },
-                        { methods: ["GET"], route: "/:id", roles: ["restaurantOwner", "user", "deliveryman", "admin", "salesman"] },
-                        { methods: ["PATCH", "PUT", "DELETE"], route: "/:id", roles: ["user", "admin"] },
-                        // Status
-                        { methods: ["POST"], route: "/status", roles: ["admin", "technician"] },
-                        { methods: ["DELETE", "PATCH"], route: "/status/:id", roles: ["admin", "technician"] }
+                        { methods: ["GET"], route: "/", roles: ["admin", "technician"] },
                     ]
                 }
             });
