@@ -1,5 +1,4 @@
 const axios = require('axios');
-const HOST = process.env.HOST;
 async function pingService(host, port, url) {
   try {
     const axiosInstance = axios.create({
@@ -19,74 +18,98 @@ async function pingService(host, port, url) {
 module.exports = {
   pingAuthentification: async (req, res) => {
     let isAvailable;
+    const HOST = process.env.AUTHENTIFICATION_HOST;
+    const PORT = process.env.AUTHENTIFICATION_PORT;
+    const ENDPOINT = `/api/auth`;
     try {
-      isAvailable = await pingService(HOST, 3000, `/api/auth`);
+      isAvailable = await pingService(HOST, PORT, ENDPOINT);
     } catch (error) {
       isAvailable = false;
     }
-    return { name: "authentification", host: HOST, port: 3000, isAvailable, endpoint: `/api/auth` }
+    return { name: "authentification", host: HOST, port: PORT, isAvailable, endpoint: ENDPOINT }
   },
   pingCompte: async (req, res) => {
     let isAvailable;
+    const HOST = process.env.ACCOUNT_HOST;
+    const PORT = process.env.ACCOUNT_PORT;
+    const ENDPOINT = `/api/accounts`;
     try {
-      isAvailable = await pingService(HOST, 3001, `/api/accounts`);
+      isAvailable = await pingService(HOST, PORT, ENDPOINT);
     } catch (error) {
       isAvailable = false;
     }
-    return { name: "compte", host: HOST, port: 3001, isAvailable, endpoint: `/api/accounts` }
+    return { name: "compte", host: HOST, port: PORT, isAvailable, endpoint: ENDPOINT }
   },
   pingCommande: async (req, res) => {
     let isAvailable;
+    const HOST = process.env.ORDER_HOST;
+    const PORT = process.env.ORDER_PORT;
+    const ENDPOINT = `/api/orders`;
     try {
-      isAvailable = await pingService(HOST, 3002, `/api/orders`);
+      isAvailable = await pingService(HOST, PORT, ENDPOINT);
     } catch (error) {
       isAvailable = false;
     }
-    return { name: "commande", host: HOST, port: 3002, isAvailable, endpoint: `/api/orders` }
+    return { name: "commande", host: HOST, port: PORT, isAvailable, endpoint: ENDPOINT }
   },
   pingMenu: async (req, res) => {
     let isAvailable;
+    const HOST = process.env.ARTICLE_HOST;
+    const PORT = process.env.ARTICLE_PORT;
+    const ENDPOINT = `/api/articles/menus`;
     try {
-      isAvailable = await pingService(HOST, 3003, `/api/articles/menus`);
+      isAvailable = await pingService(HOST, PORT, ENDPOINT);
     } catch (error) {
       isAvailable = false;
     }
-    return { name: "menu", host: HOST, port: 3003, isAvailable, endpoint: `/api/articles/menus` }
+    return { name: "menu", host: HOST, port: PORT, isAvailable, endpoint: ENDPOINT }
   },
   pingProduct: async (req, res) => {
     let isAvailable;
+    const HOST = process.env.ARTICLE_HOST;
+    const PORT = process.env.ARTICLE_PORT;
+    const ENDPOINT = `/api/articles/products`;
     try {
-      isAvailable = await pingService(HOST, 3003, `/api/articles/products`);
+      isAvailable = await pingService(HOST, PORT, ENDPOINT);
     } catch (error) {
       isAvailable = false;
     }
-    return { name: "products", host: HOST, port: 3003, isAvailable, endpoint: `/api/articles/products` }
+    return { name: "products", host: HOST, port: PORT, isAvailable, endpoint: ENDPOINT }
   },
   pingRestaurant: async (req, res) => {
     let isAvailable;
+    const HOST = process.env.RESTAURANTS_HOST;
+    const PORT = process.env.RESTAURANTS_PORT;
+    const ENDPOINT = `/api/restaurants`;
     try {
-      isAvailable = await pingService(HOST, 3005, `/api/restaurants`);
+      isAvailable = await pingService(HOST, PORT, ENDPOINT);
     } catch (error) {
       isAvailable = false;
     }
-    return { name: "restaurant", host: HOST, port: 3005, isAvailable, endpoint: `/api/restaurants` }
+    return { name: "restaurant", host: HOST, port: PORT, isAvailable, endpoint: ENDPOINT }
   },
   pingStatistique: async (req, res) => {
     let isAvailable;
+    const HOST = process.env.STATISTICS_HOST;
+    const PORT = process.env.STATISTICS_PORT;
+    const ENDPOINT =`/api/statistics`;
     try {
-      isAvailable = await pingService(HOST, 3006, `/api/statistics`);
+      isAvailable = await pingService(HOST, PORT, ENDPOINT);
     } catch (error) {
       isAvailable = false;
     }
-    return { name: "statistique", host: HOST, port: 3006, isAvailable, endpoint: `/api/statistics` }
+    return { name: "statistique", host: HOST, port: PORT, isAvailable, endpoint: ENDPOINT }
   },
   pingGit: async (req, res) => {
     let isAvailable;
+    const HOST = process.env.GIT_HOST;
+    const PORT = process.env.GIT_PORT;
+    const ENDPOINT = `/api/git`;
     try {
-      isAvailable = await pingService(HOST, 3008, `/api/git`);
+      isAvailable = await pingService(HOST, PORT, ENDPOINT);
     } catch (error) {
       isAvailable = false;
     }
-    return { name: "git", host: HOST, port: 3008, isAvailable, endpoint: `/api/git` }
+    return { name: "git", host: HOST, port: PORT, isAvailable, endpoint: ENDPOINT }
   }
 }
