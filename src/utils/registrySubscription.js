@@ -14,8 +14,8 @@ module.exports = {
                     serviceLabel: "Service monitoring",
                     host: process.env.HOST,
                     port: process.env.PORT,
-                    entrypointUrl: "/api/orders",
-                    redirectUrl: "/api/orders",
+                    entrypointUrl: "/api/monitoring",
+                    redirectUrl: "/api/monitoring",
                     routeProtections: [
                         // Orders
                         { methods: ["GET"], route: "/", roles: ["admin", "technician"] },
